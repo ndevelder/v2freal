@@ -1,0 +1,31 @@
+diff -Naurp v2f/v2f.C v2fnew/v2f.C
+--- v2f/v2f.C	2018-02-02 12:54:47.000000000 -0600
++++ v2fnew/v2f.C	2018-02-02 12:57:01.000000000 -0600
+@@ -527,12 +527,12 @@ tmp<volSymmTensorField> v2f::devReff() c
+ }
+ 
+ // Term that is directly added to the momentum equation
+-tmp<fvVectorMatrix> v2f::divDevReff(volVectorField& U) const
++tmp<fvVectorMatrix> v2f::divDevReff() const
+ {
+     return
+     (
+-      - fvm::laplacian(nuEff(), U)
+-      - fvc::div(nuEff()*dev(fvc::grad(U)().T()))
++      - fvm::laplacian(nuEff(), U_)
++      - fvc::div(nuEff()*dev(fvc::grad(U_)().T()))
+ 	);
+ }
+ 
+diff -Naurp v2f/v2f.H v2fnew/v2f.H
+--- v2f/v2f.H	2018-02-02 12:54:52.000000000 -0600
++++ v2fnew/v2f.H	2018-02-02 12:57:01.000000000 -0600
+@@ -292,7 +292,7 @@ public:
+         virtual tmp<volSymmTensorField> devReff() const;
+ 
+         //- Return the source term for the momentum equation
+-        virtual tmp<fvVectorMatrix> divDevReff(volVectorField& U) const;
++        virtual tmp<fvVectorMatrix> divDevReff() const;
+ 
+         //- Solve the turbulence equations and correct the turbulence viscosity
+         virtual void correct();

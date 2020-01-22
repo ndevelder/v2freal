@@ -1,0 +1,79 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM Extend Project: Open Source CFD        |
+|  \\    /   O peration     | Version:  1.6-ext                               |
+|   \\  /    A nd           | Web:      www.extend-project.de                 |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      RASProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+RASModel            v2f;
+
+turbulence          on;
+
+printCoeffs         on;
+
+v2fCoeffs{
+
+   solveK              true;
+   solveEps            true;
+   solvePsi            true;
+   solvePhi            true;
+   solveNut            true;
+   eqnSigmaK           false;
+   eqnSigmaEps         false;
+   eqnSigmaV2          false;
+   sigmaKInit          1.0; 
+   sigmaEpsInit        0.77;
+   sigmaEpsVisc        1.0;
+   sigmaPhiInit        1.0;
+   cL1                 0.23;
+   cL2                 70.0;
+   cP1		       1.4;
+   cP2                 0.3;
+   cP3                 0.12;
+   cP4                 0.85714;
+   cEp1                1.44;
+   cEp2con			   1.9;
+   cMu                 0.22;
+   betaK			   0.09;
+   debugWrite          false;
+   nutRatMax 		   1e5;
+}
+
+boundaryCoeffs{
+
+   solveK              true;
+   solveEps            true;
+   solvePsi            true;
+   solvePhi            true;
+   solveNut            true;
+   eqnSigmaK           false;
+   eqnSigmaEps         false;
+   eqnSigmaV2          false;
+   sigmaKInit          1.0;
+   sigmaEpsInit        0.77;
+   sigmaEpsVisc        1.0;
+   sigmaPhiInit        1.0;
+   cP1                 1.4;
+   cP2                 0.3;
+   cP3                 0.12;
+   cP4                 0.85714;
+   cEp1                1.45;
+   cEp2con                         1.9;
+   cMu                 0.22;
+   betaK                           0.09;
+   debugWrite          false;
+   nutRatMax               1e5;
+}
+
+
+// ************************************************************************* //
+
